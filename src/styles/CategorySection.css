@@ -1,0 +1,21 @@
+.plantname_heading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.plant_heading {
+    width: 400px;
+    text-align: center;
+    margin: 20px;
+}
+
+.product-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    padding: 20px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}

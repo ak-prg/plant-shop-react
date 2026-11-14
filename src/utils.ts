@@ -10,3 +10,7 @@ export const calculateTotalQuantity = (cart) => {
 };
 
 export const isInCart = (cart, name) => cart.some((item) => item.name === name);
+
+export const getIncreasedQuantity = (item) => item.quantity + 1;
+
+export const getDecreasedQuantity = (item) => item.quantity - 1;

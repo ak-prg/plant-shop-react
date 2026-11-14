@@ -3,12 +3,11 @@ import "./styles/ProductList.css";
 import CartItem from "./CartItem";
 import { addItem } from "./CartSlice";
 import { useDispatch, useSelector  } from "react-redux";
-import { calculateTotalQuantity } from "./utils";
+import { calculateTotalQuantity, isInCart } from "./utils";
 import PropTypes from "prop-types";
 
 function ProductList({ onHomeClick }) {
   const [showCart, setShowCart] = useState(false);
-  const [addedToCart, setAddedToCart] = useState({});
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart.items);
 
@@ -300,10 +299,6 @@ function ProductList({ onHomeClick }) {
 
   const handleAddToCart = (product) => {
     dispatch(addItem(product));
-    setAddedToCart((prevState) => ({
-      ...prevState,
-      [product.name]: true,
-    }));
   };
 
   return (
@@ -386,9 +381,9 @@ function ProductList({ onHomeClick }) {
                     <button
                       className="product-button"
                       onClick={() => handleAddToCart(plant)}
-                      disabled={addedToCart[plant.name]}
+                      disabled={isInCart(cart, plant.name)}
                     >
-                      {addedToCart[plant.name] ? "Added" : "Add to Cart"}
+                      {isInCart(cart, plant.name) ? "Added" : "Add to Cart"}
                     </button>
                   </div>
                 ))}

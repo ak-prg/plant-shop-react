@@ -8,3 +8,5 @@ export const calculateTotalCost = (item) => {
 export const calculateTotalQuantity = (cart) => {
   return cart.reduce((total, item) => total + item.quantity, 0);
 };
+
+export const isInCart = (cart, name) => cart.some((item) => item.name === name);
